@@ -1,0 +1,74 @@
+{
+  "version": 4,
+  "targets": {
+    "net10.0": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    "net10.0": []
+  },
+  "packageFolders": {
+    "/Users/henrypiper/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/Sudoku_Solver.csproj",
+      "projectName": "Sudoku_Solver",
+      "projectPath": "/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/Sudoku_Solver.csproj",
+      "packagesPath": "/Users/henrypiper/.nuget/packages/",
+      "outputPath": "/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/henrypiper/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net10.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net10.0": {
+          "framework": "net10.0",
+          "targetAlias": "net10.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "all"
+      },
+      "SdkAnalysisLevel": "10.0.300"
+    },
+    "frameworks": {
+      "net10.0": {
+        "framework": "net10.0",
+        "targetAlias": "net10.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.302/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

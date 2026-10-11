@@ -1,0 +1,14 @@
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/bin/Debug/net10.0/Sudoku_Solver
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/bin/Debug/net10.0/Sudoku_Solver.deps.json
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/bin/Debug/net10.0/Sudoku_Solver.runtimeconfig.json
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/bin/Debug/net10.0/Sudoku_Solver.dll
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/bin/Debug/net10.0/Sudoku_Solver.pdb
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.GeneratedMSBuildEditorConfig.editorconfig
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.AssemblyInfoInputs.cache
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.AssemblyInfo.cs
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.csproj.CoreCompileInputs.cache
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.dll
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/refint/Sudoku_Solver.dll
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.pdb
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.genruntimeconfig.cache
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/ref/Sudoku_Solver.dll
