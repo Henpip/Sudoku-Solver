@@ -4,7 +4,7 @@
     {
         static void Main()
         { 
-            int[,] grid = EnterGrid();
+            int[,] grid = EnterGridLines();
             if (Solve(grid))
             {
                 PrintGrid(grid);
@@ -15,7 +15,31 @@
             }
         }
 
-        static int[,] EnterGrid()
+        static int[,] EnterGridLines()
+        {
+            int[,] grid = { {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+                            {0, 0, 0, 0, 0, 0, 0, 0, 0} };
+            for (int row = 0; row <= 8; row++)
+            {
+                Console.Write("Enter row {0}: ", row);
+                string input = Console.ReadLine() ?? "";
+                string[] numbers = input.Split(' ');
+                for (int col = 0; col <= 8; col++)
+                {
+                    grid[row, col] = Convert.ToInt32(numbers[col]);
+                }
+            }
+            return grid;
+        }
+
+        /*static int[,] EnterGridManually()
         {
             int[,] grid = { {0, 0, 0, 0, 0, 0, 0, 0, 0},
                             {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -36,7 +60,7 @@
             }
 
             return grid;
-        }
+        }*/
 
         static bool IsValid(int[,] grid, int r, int c, int k)
         {

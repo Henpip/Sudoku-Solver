@@ -12,3 +12,4 @@
 /Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.pdb
 /Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.genruntimeconfig.cache
 /Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/ref/Sudoku_Solver.dll
+/Users/henrypiper/Library/CloudStorage/OneDrive-TheBishop'sStortfordHighSchool/N_Drive/A-Levels/Extra-Curricular Projects/Sudoku_Solver/Sudoku_Solver/obj/Debug/net10.0/Sudoku_Solver.sourcelink.json
