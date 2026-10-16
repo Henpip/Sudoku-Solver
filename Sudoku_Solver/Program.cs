@@ -14,7 +14,7 @@
                 Console.WriteLine("No solution exists");
             }
         }
-
+        
         static int[,] EnterGridLines()
         {
             int[,] grid = { {0, 0, 0, 0, 0, 0, 0, 0, 0},
@@ -26,6 +26,8 @@
                             {0, 0, 0, 0, 0, 0, 0, 0, 0},
                             {0, 0, 0, 0, 0, 0, 0, 0, 0},
                             {0, 0, 0, 0, 0, 0, 0, 0, 0} };
+            Console.WriteLine("Enter each column of the row, separated by spaces:");
+            Console.WriteLine("X X X X X X X X X");
             for (int row = 0; row <= 8; row++)
             {
                 Console.Write("Enter row {0}: ", row);
@@ -147,6 +149,45 @@
                 }
                 Console.WriteLine();
             }
+        }
+        static int[,] SolveAndReturn(int[,] grid)
+        {
+            if (Solve(grid))
+            {
+                // goes through each row
+                for (int row = 0; row <= 8; row++)
+                {
+                    // goes through each column in that row
+                    for (int col = 0; col <= 8; col++)
+                    {
+                        // if cell is empty
+                        if (grid[row, col] == 0)
+                        {
+                            // try every number from 1 to 9
+                            for (int k = 1; k <= 9; k++)
+                            {
+                                // check if k works
+                                if (IsValid(grid, row, col, k))
+                                {
+                                    grid[row, col] = k;
+                                    // solve rest of the grid
+                                    if (Solve(grid))
+                                    {
+                                        // if grid is solved, return true
+                                        break;
+                                    }
+                                    grid[row, col] = 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                return null;
+            }
+            return grid;
         }
     }
 }
