@@ -3,29 +3,98 @@
     class Program
     {
         static void Main()
-        { 
-            int[,] grid = EnterGridLines();
-            if (Solve(grid))
+        {
+            Menu();
+        }
+
+        static void Menu()
+        {
+            string answer = "";
+            Console.WriteLine("-----------------");
+            Console.WriteLine("| Sudoku Solver |");
+            Console.WriteLine("-----------------");
+            Console.WriteLine();
+            while (answer != "c")
             {
+                Console.WriteLine("a: Solve Grid");
+                Console.WriteLine("b: Try a Sudoku Puzzle");
+                Console.WriteLine("c: Quit");
+                Console.WriteLine();
+                Console.Write("Enter your choice: ");
+                answer = Console.ReadLine() ?? "c";
+                if (answer == "a")
+                {
+                    Console.WriteLine("a: Enter Grid One by One");
+                    Console.WriteLine("b: Enter Grid Line by Line");
+                    Console.WriteLine();
+                    Console.Write("Enter your choice: ");
+                    answer = Console.ReadLine() ?? "";
+                    if (answer == "a")
+                    {
+                        int[,] grid = EnterGridManually();
+                        SolveAndReturn(grid);
+                    }
+                    else if (answer == "b")
+                    {
+                        int[,] grid = EnterGridLines();
+                        SolveAndReturn(grid);
+                    }
+                }
+                else if (answer == "b")
+                {
+                    Console.WriteLine("a: Enter Grid to Solve One by One");
+                    Console.WriteLine("b: Enter Grid to Solve Line by Line");
+                    Console.WriteLine();
+                    Console.Write("Enter your choice: ");
+                    answer = Console.ReadLine() ?? "";
+                    if (answer == "a")
+                    {
+                        int[,] grid = EnterGridManually();
+                        UserSolve(grid);
+                    }
+                    else if (answer == "b")
+                    {
+                        int[,] grid = EnterGridLines();
+                        UserSolve(grid);
+                    }
+                }
+            }
+        }
+
+        static void UserSolve(int[,] grid)
+        {
+            int[,] completedGrid = SolveAndReturn(grid);
+            PrintGrid(grid);
+            while (ContainsZero(grid))
+            {
+                Console.Write("Enter the row of the square you want to add: ");
+                int row = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter the column of the square you want to add: ");
+                int column = Convert.ToInt32(Console.ReadLine());
+                Console.Write("Enter the number you want to add: ");
+                int number = Convert.ToInt32(Console.ReadLine());
+                grid[row, column] = number;
                 PrintGrid(grid);
+            }
+            if (grid == completedGrid)
+            {
+                Console.WriteLine("You have solved the sudoku grid");
             }
             else
             {
-                Console.WriteLine("No solution exists");
+                Console.WriteLine("You have not solved the sudoku grid");
+                Console.Write("Do you want to solve the grid again (y/n): ");
+                string answer = Console.ReadLine() ?? "";
+                if (answer == "y")
+                {
+                    UserSolve(grid);
+                }
             }
         }
-        
+
         static int[,] EnterGridLines()
         {
-            int[,] grid = { {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0} };
+            int[,] grid = EmptyGrid();
             Console.WriteLine("Enter each column of the row, separated by spaces:");
             Console.WriteLine("X X X X X X X X X");
             for (int row = 0; row <= 8; row++)
@@ -38,20 +107,13 @@
                     grid[row, col] = Convert.ToInt32(numbers[col]);
                 }
             }
+
             return grid;
         }
 
-        /*static int[,] EnterGridManually()
+        static int[,] EnterGridManually()
         {
-            int[,] grid = { {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-                            {0, 0, 0, 0, 0, 0, 0, 0, 0} };
+            int[,] grid = EmptyGrid();
             for (int row = 0; row <= 8; row++)
             {
                 for (int col = 0; col <= 8; col++)
@@ -62,7 +124,7 @@
             }
 
             return grid;
-        }*/
+        }
 
         static bool IsValid(int[,] grid, int r, int c, int k)
         {
@@ -74,7 +136,7 @@
                     return false;
                 }
             }
-            
+
             // checks every number in a column to check if any of them equal k, and if they do, return false
             for (int row = 0; row < 9; row++)
             {
@@ -83,11 +145,11 @@
                     return false;
                 }
             }
-            
+
             // finds the coordinates of the top left corner of the 3x3 box that the current cell is in
             int boxStartRow = r / 3 * 3;
             int boxStartCol = c / 3 * 3;
-            
+
             // loops through every number in the 3x3 box to check if any of them equal k, and if they do, return false
             for (int row = boxStartRow; row < boxStartRow + 3; row++)
             {
@@ -99,6 +161,7 @@
                     }
                 }
             }
+
             return true;
         }
 
@@ -126,13 +189,16 @@
                                     // if grid is solved, return true
                                     return true;
                                 }
+
                                 grid[row, col] = 0;
                             }
                         }
+
                         return false;
                     }
                 }
             }
+
             return true;
         }
 
@@ -147,9 +213,11 @@
                     // outputs number in grid
                     Console.Write(grid[row, col] + " ");
                 }
+
                 Console.WriteLine();
             }
         }
+
         static int[,] SolveAndReturn(int[,] grid)
         {
             if (Solve(grid))
@@ -176,6 +244,7 @@
                                         // if grid is solved, return true
                                         break;
                                     }
+
                                     grid[row, col] = 0;
                                 }
                             }
@@ -185,8 +254,40 @@
             }
             else
             {
-                return null;
+                return EmptyGrid();
             }
+
+            return grid;
+        }
+
+        static bool ContainsZero(int[,] grid)
+        {
+            for (int row = 0; row <= 8; row++)
+            {
+                for (int col = 0; col <= 8; col++)
+                {
+                    if (grid[row, col] == 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        static int[,] EmptyGrid()
+        {
+            int[,] grid =
+            {
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+            };
             return grid;
         }
     }
