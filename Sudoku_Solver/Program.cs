@@ -61,22 +61,37 @@
             }
         }
 
+        static int[,] CopyGrid(int[,] grid)
+        {
+            int[,] copy = EmptyGrid();
+            for (int row = 0; row <= 8; row++)
+            {
+                for (int col = 0; col <= 8; col++)
+                {
+                    copy[row, col] = grid[row, col];
+                }
+            }
+            return copy;
+        }
+
         static void UserSolve(int[,] grid)
         {
-            int[,] completedGrid = SolveAndReturn(grid);
+            int[,] completedGrid = SolveAndReturn(CopyGrid(grid));
             PrintGrid(grid);
             while (ContainsZero(grid))
             {
                 Console.Write("Enter the row of the square you want to add: ");
                 int row = Convert.ToInt32(Console.ReadLine());
+                row--;
                 Console.Write("Enter the column of the square you want to add: ");
                 int column = Convert.ToInt32(Console.ReadLine());
+                column--;
                 Console.Write("Enter the number you want to add: ");
                 int number = Convert.ToInt32(Console.ReadLine());
                 grid[row, column] = number;
                 PrintGrid(grid);
             }
-            if (grid == completedGrid)
+            if (GridsAreEqual(grid, completedGrid))
             {
                 Console.WriteLine("You have solved the sudoku grid");
             }
@@ -92,6 +107,21 @@
             }
         }
 
+        static bool GridsAreEqual(int[,] firstGrid, int[,] secondGrid)
+        {
+            for (int row = 0; row <= 8; row++)
+            {
+                for (int col = 0; col <= 8; col++)
+                {
+                    if (firstGrid[row, col] != secondGrid[row, col])
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
         static int[,] EnterGridLines()
         {
             int[,] grid = EmptyGrid();
@@ -99,7 +129,7 @@
             Console.WriteLine("X X X X X X X X X");
             for (int row = 0; row <= 8; row++)
             {
-                Console.Write("Enter row {0}: ", row);
+                Console.Write("Enter row {0}: ", row + 1);
                 string input = Console.ReadLine() ?? "";
                 string[] numbers = input.Split(' ');
                 for (int col = 0; col <= 8; col++)
@@ -107,7 +137,6 @@
                     grid[row, col] = Convert.ToInt32(numbers[col]);
                 }
             }
-
             return grid;
         }
 
@@ -118,11 +147,10 @@
             {
                 for (int col = 0; col <= 8; col++)
                 {
-                    Console.Write("Enter value for row {0}, column {1}: ", row, col);
+                    Console.Write("Enter value for row {0}, column {1}: ", row + 1, col + 1);
                     grid[row, col] = Convert.ToInt32(Console.ReadLine());
                 }
             }
-
             return grid;
         }
 
@@ -161,7 +189,6 @@
                     }
                 }
             }
-
             return true;
         }
 
@@ -193,28 +220,37 @@
                                 grid[row, col] = 0;
                             }
                         }
-
                         return false;
                     }
                 }
             }
-
             return true;
         }
 
         static void PrintGrid(int[,] grid)
         {
-            // goes through each row
+            Console.WriteLine("   1 2 3  4 5 6  7 8 9");
             for (int row = 0; row <= 8; row++)
             {
-                // goes through each column in that row
+                Console.Write("{0} |", row + 1);
                 for (int col = 0; col <= 8; col++)
                 {
-                    // outputs number in grid
-                    Console.Write(grid[row, col] + " ");
+                    Console.Write(grid[row, col]);
+                    if (col != 8)
+                    {
+                        Console.Write(" ");
+                    }
+                    if (col == 2 || col == 5)
+                    {
+                        Console.Write(" ");
+                    }
                 }
-
+                Console.Write("|");
                 Console.WriteLine();
+                if (row ==2 || row == 5)
+                {
+                    Console.WriteLine();
+                }
             }
         }
 
@@ -256,7 +292,6 @@
             {
                 return EmptyGrid();
             }
-
             return grid;
         }
 
@@ -274,6 +309,7 @@
             }
             return false;
         }
+        
         static int[,] EmptyGrid()
         {
             int[,] grid =
