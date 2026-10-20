@@ -14,16 +14,18 @@
             Console.WriteLine("| Sudoku Solver |");
             Console.WriteLine("-----------------");
             Console.WriteLine();
-            while (answer != "c")
+            while (answer != "d")
             {
                 Console.WriteLine("a: Solve Grid");
-                Console.WriteLine("b: Try a Sudoku Puzzle");
-                Console.WriteLine("c: Quit");
+                Console.WriteLine("b: Enter and Try a Sudoku Puzzle");
+                Console.WriteLine("c: Try a Random Sudoku Puzzle");
+                Console.WriteLine("d: Quit");
                 Console.WriteLine();
                 Console.Write("Enter your choice: ");
                 answer = Console.ReadLine() ?? "c";
                 if (answer == "a")
                 {
+                    Console.WriteLine();
                     Console.WriteLine("a: Enter Grid One by One");
                     Console.WriteLine("b: Enter Grid Line by Line");
                     Console.WriteLine();
@@ -42,6 +44,7 @@
                 }
                 else if (answer == "b")
                 {
+                    Console.WriteLine();
                     Console.WriteLine("a: Enter Grid to Solve One by One");
                     Console.WriteLine("b: Enter Grid to Solve Line by Line");
                     Console.WriteLine();
@@ -58,7 +61,74 @@
                         UserSolve(grid);
                     }
                 }
+                else if (answer == "c")
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("a: Easy Puzzle");
+                    Console.WriteLine("b: Hard Puzzle");
+                    Console.WriteLine();
+                    Console.Write("Enter your choice: ");
+                    answer = Console.ReadLine() ?? "";
+                    if (answer == "a")
+                    {
+                        int[,] grid = EasyGrid();
+                        UserSolve(grid);
+                    }
+                    else if (answer == "b")
+                    {
+                        int[,] grid = HardGrid();
+                        UserSolve(grid);
+                    }
+                }
             }
+        }
+
+        static int[,] EasyGrid()
+        {
+            Random rnd = new Random();
+            int numOfFilledCells = rnd.Next(30, 46);
+            int[,] grid = EmptyGrid();
+            do
+            {
+                for (int i = 1; i <= numOfFilledCells; i++)
+                {
+                    int rndRow = rnd.Next(0, 9);
+                    int rndCol = rnd.Next(0, 9);
+                    if (grid[rndRow, rndCol] == 0)
+                    {
+                        grid[rndRow, rndCol] = rnd.Next(1, 9);
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+            } while (Solve(grid));
+            return grid;
+        }
+
+        static int[,] HardGrid()
+        {
+            Random rnd = new Random();
+            int numOfFilledCells = rnd.Next(22, 31);
+            int[,] grid = EmptyGrid();
+            do
+            {
+                for (int i = 1; i <= numOfFilledCells; i++)
+                {
+                    int rndRow = rnd.Next(0, 9);
+                    int rndCol = rnd.Next(0, 9);
+                    if (grid[rndRow, rndCol] == 0)
+                    {
+                        grid[rndRow, rndCol] = rnd.Next(1, 9);
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+            } while (Solve(grid));
+            return grid;
         }
 
         static int[,] CopyGrid(int[,] grid)
@@ -194,16 +264,12 @@
 
         static bool Solve(int[,] grid)
         {
-            // goes through each row
             for (int row = 0; row <= 8; row++)
             {
-                // goes through each column in that row
                 for (int col = 0; col <= 8; col++)
                 {
-                    // if cell is empty
                     if (grid[row, col] == 0)
                     {
-                        // try every number from 1 to 9
                         for (int k = 1; k <= 9; k++)
                         {
                             // check if k works
@@ -258,16 +324,12 @@
         {
             if (Solve(grid))
             {
-                // goes through each row
                 for (int row = 0; row <= 8; row++)
                 {
-                    // goes through each column in that row
                     for (int col = 0; col <= 8; col++)
                     {
-                        // if cell is empty
                         if (grid[row, col] == 0)
                         {
-                            // try every number from 1 to 9
                             for (int k = 1; k <= 9; k++)
                             {
                                 // check if k works
