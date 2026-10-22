@@ -65,7 +65,8 @@
                 {
                     Console.WriteLine();
                     Console.WriteLine("a: Easy Puzzle");
-                    Console.WriteLine("b: Hard Puzzle");
+                    Console.WriteLine("b: Medium Puzzle");
+                    Console.WriteLine("c: Hard Puzzle");
                     Console.WriteLine();
                     Console.Write("Enter your choice: ");
                     answer = Console.ReadLine() ?? "";
@@ -75,6 +76,11 @@
                         UserSolve(grid);
                     }
                     else if (answer == "b")
+                    {
+                        int[,] grid = MediumGrid();
+                        UserSolve(grid);
+                    }
+                    else if (answer == "c")
                     {
                         int[,] grid = HardGrid();
                         UserSolve(grid);
@@ -87,6 +93,30 @@
         {
             Random rnd = new Random();
             int numOfFilledCells = rnd.Next(30, 46);
+            int[,] grid = EmptyGrid();
+            do
+            {
+                for (int i = 1; i <= numOfFilledCells; i++)
+                {
+                    int rndRow = rnd.Next(0, 9);
+                    int rndCol = rnd.Next(0, 9);
+                    if (grid[rndRow, rndCol] == 0)
+                    {
+                        grid[rndRow, rndCol] = rnd.Next(1, 9);
+                    }
+                    else
+                    {
+                        i--;
+                    }
+                }
+            } while (Solve(grid));
+            return grid;
+        }
+        
+        static int[,] MediumGrid()
+        {
+            Random rnd = new Random();
+            int numOfFilledCells = rnd.Next(26, 38);
             int[,] grid = EmptyGrid();
             do
             {
